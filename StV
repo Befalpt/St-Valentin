@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigmes de la Saint-Valentin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            color: #d6336c;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            background-color: #d6336c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #a82650;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💖 Enigmes de la Saint-Valentin 💖</h1>
+        <p>Résous ces énigmes pour découvrir l'emplacement de tes surprises !</p>
+        
+        <div id="enigme1">
+            <h3>Enigme 1 :</h3>
+            <p>🏠➕📺 (Où se trouve le premier paquet ?)</p>
+            <input type="text" id="rep1">
+            <button onclick="verifierReponse(1, 'sous la télé')">Valider</button>
+            <p id="result1" class="hidden"></p>
+        </div>
+        
+        <div id="enigme2" class="hidden">
+            <h3>Enigme 2 :</h3>
+            <p>"Je suis doux et moelleux, la nuit je t’accueille. Où suis-je ?"</p>
+            <input type="text" id="rep2">
+            <button onclick="verifierReponse(2, 'sur le lit')">Valider</button>
+            <p id="result2" class="hidden"></p>
+        </div>
+        
+        <div id="enigme3" class="hidden">
+            <h3>Enigme 3 :</h3>
+            <p>"Je suis toujours là pour toi, mais souvent invisible. Je marque le temps et te garde au chaud."</p>
+            <input type="text" id="rep3">
+            <button onclick="verifierReponse(3, 'dans le manteau')">Valider</button>
+            <p id="result3" class="hidden"></p>
+        </div>
+    </div>
+    
+    <script>
+        function verifierReponse(num, reponseAttendue) {
+            let input = document.getElementById('rep' + num).value.toLowerCase().trim();
+            let result = document.getElementById('result' + num);
+            let nextEnigme = document.getElementById('enigme' + (num + 1));
+
+            if (input === reponseAttendue) {
+                result.textContent = "Bravo ! Ton paquet est caché " + reponseAttendue;
+                result.classList.remove("hidden");
+                if (nextEnigme) {
+                    nextEnigme.classList.remove("hidden");
+                }
+            } else {
+                result.textContent = "Oups, essaie encore !";
+                result.classList.remove("hidden");
+            }
+        }
+    </script>
+</body>
+</html>
