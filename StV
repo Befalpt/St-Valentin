@@ -8,8 +8,8 @@
         body {
             font-family: 'Poppins', sans-serif;
             text-align: center;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            color: #ffffff;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+            color: #333333;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,11 +18,12 @@
         }
         .container {
             max-width: 600px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            color: #333333;
         }
         .hidden {
             display: none;
@@ -55,12 +56,12 @@
 <body>
     <div class="container">
         <h1>💖 Enigmes de la Saint-Valentin 💖</h1>
-        <p>Résous ces énigmes pour découvrir l'emplacement de tes surprises !</p>
+        <p>Mon amour, voici une petite énigme que je t'invite à résoudre. Si tu réponds correctement aux énigmes, tu pourras découvrir la surprise qui t'attend. Je t'aime de tout mon cœur mon amour ! Bonne chance 💕</p>
         
         <div id="enigme1">
             <h3>Enigme 1 :</h3>
             <p>"Bientôt, les nuages de vapeur ne laisseront plus leur empreinte ici. Où se trouve le premier paquet ?"</p>
-            <input type="text" id="rep1">
+            <input type="text" id="rep1" onkeypress="detectEnter(event, verifierReponse1)">
             <button onclick="verifierReponse1()">Valider</button>
             <p id="result1" class="hidden"></p>
         </div>
@@ -68,9 +69,9 @@
         <div id="enigme2" class="hidden">
             <h3>Enigme 2 :</h3>
             <p>"Cite trois personnages de l'anime My Hero Academia :"</p>
-            <input type="text" id="rep2-1">
-            <input type="text" id="rep2-2">
-            <input type="text" id="rep2-3">
+            <input type="text" id="rep2-1" onkeypress="detectEnter(event, verifierReponse2)">
+            <input type="text" id="rep2-2" onkeypress="detectEnter(event, verifierReponse2)">
+            <input type="text" id="rep2-3" onkeypress="detectEnter(event, verifierReponse2)">
             <button onclick="verifierReponse2()">Valider</button>
             <p id="result2" class="hidden"></p>
         </div>
@@ -78,7 +79,7 @@
         <div id="enigme3" class="hidden">
             <h3>Enigme 3 :</h3>
             <p>Entre le code secret :</p>
-            <input type="text" id="code">
+            <input type="text" id="code" onkeypress="detectEnter(event, verifierCode)">
             <button onclick="verifierCode()">Valider</button>
             <p id="result3" class="hidden" style="color: #ff4f7b;"></p>
         </div>
@@ -89,6 +90,12 @@
     </div>
     
     <script>
+        function detectEnter(event, callback) {
+            if (event.key === 'Enter') {
+                callback();
+            }
+        }
+
         function verifierReponse1() {
             let input = document.getElementById('rep1').value.toLowerCase().trim();
             let result = document.getElementById('result1');
@@ -107,7 +114,7 @@
         }
 
         function verifierReponse2() {
-            let validNames = ['allmight', 'all-might', 'deku', 'dekou', 'izuku', 'izoku', 'shoto', 'endevor', 'endavor', 'mamie bisous', 'grantorino', 'grand torino', 'bakugo', 'bakougo', 'all for one', 'crématorium', 'dark shadow'];
+            let validNames = ['allmight', 'all-might', 'all might','deku', 'dekou', 'izuku', 'izoku', 'shoto', 'endevor', 'endavor', 'mamie bisous', 'grantorino', 'grand torino', 'bakugo', 'bakougo', 'all for one', 'crématorium', 'dark shadow'];
             
             let rep1 = document.getElementById('rep2-1').value.toLowerCase().trim();
             let rep2 = document.getElementById('rep2-2').value.toLowerCase().trim();
@@ -116,7 +123,7 @@
             let enigme3 = document.getElementById('enigme3');
             
             if (validNames.includes(rep1) && validNames.includes(rep2) && validNames.includes(rep3)) {
-                result.textContent = "Bravo ! Tu as trouvé trois personnages de My Hero Academia !";
+                result.textContent = "Bravo ! Sais-tu pourquoi je suis heureux? Parce que.... BIBOU est là!";
                 result.classList.remove("hidden");
                 enigme3.classList.remove("hidden");
             } else {
@@ -134,7 +141,7 @@
                 messageFinal.classList.remove("hidden");
                 result.classList.add("hidden");
             } else {
-                result.textContent = "Mauvais code, essaie encore !";
+                result.textContent = "Mauvais code, essaie encore ! Le code est une date importante";
                 result.classList.remove("hidden");
             }
         }
