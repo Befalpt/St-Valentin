@@ -85,13 +85,15 @@
         </div>
         
         <div id="messageFinal" class="hidden">
-            <h2>🎉 Bravo ! Tu as résolu toutes les énigmes ! 🎉</h2>
-        </div>
+    <h2>🎉 Bravo ! Tu as résolu toutes les énigmes ! 🎉</h2>
+    <p>Mon amour, ma vie a tellement changé depuis que je te connais. L'amour que je ressens pour toi est immense et il continue de grandir chaque jour. Mon futur n'existe pas sans toi, sans nous. Tant de choses nous attendent et j'ai hâte de les vivre avec toi, à tes côtés. Je t'aime ❤️.</p>
+</div>
     </div>
     
     <script>
         function detectEnter(event, callback) {
             if (event.key === 'Enter') {
+                event.preventDefault();
                 callback();
             }
         }
@@ -100,9 +102,8 @@
             let input = document.getElementById('rep1').value.toLowerCase().trim();
             let result = document.getElementById('result1');
             let enigme2 = document.getElementById('enigme2');
-            
             let reponsesAttendues = ['dans la douche', 'douche', 'salle de bain', 'salle-de-bain'];
-
+            
             if (reponsesAttendues.includes(input)) {
                 result.textContent = "Bravo ! Ton paquet est caché dans la salle de bain.";
                 result.classList.remove("hidden");
@@ -114,7 +115,7 @@
         }
 
         function verifierReponse2() {
-            let validNames = ['allmight', 'all-might', 'all might','deku', 'dekou', 'izuku', 'izoku', 'shoto', 'endevor', 'endavor', 'mamie bisous', 'grantorino', 'grand torino', 'bakugo', 'bakougo', 'all for one', 'crématorium', 'dark shadow'];
+            let validNames = ['allmight', 'all-might', 'deku', 'dekou', 'izuku', 'izoku', 'shoto', 'endevor', 'endavor', 'mamie bisous', 'grantorino', 'grand torino', 'bakugo', 'bakougo', 'all for one', 'crématorium', 'dark shadow'];
             
             let rep1 = document.getElementById('rep2-1').value.toLowerCase().trim();
             let rep2 = document.getElementById('rep2-2').value.toLowerCase().trim();
@@ -123,7 +124,7 @@
             let enigme3 = document.getElementById('enigme3');
             
             if (validNames.includes(rep1) && validNames.includes(rep2) && validNames.includes(rep3)) {
-                result.textContent = "Bravo ! Sais-tu pourquoi je suis heureux? Parce que.... BIBOU est là!";
+                result.textContent = "Bravo ! Tu as trouvé trois personnages !";
                 result.classList.remove("hidden");
                 enigme3.classList.remove("hidden");
             } else {
@@ -136,12 +137,13 @@
             let code = document.getElementById('code').value.trim();
             let messageFinal = document.getElementById('messageFinal');
             let result = document.getElementById('result3');
+            let codeCorrect = "3923";
             
-            if (code === '3923') {
-                messageFinal.classList.remove("hidden");
+            if (code === codeCorrect) {
                 result.classList.add("hidden");
+                messageFinal.classList.remove("hidden");
             } else {
-                result.textContent = "Mauvais code, essaie encore ! Le code est une date importante";
+                result.textContent = "Mauvais code, essaie encore !";
                 result.classList.remove("hidden");
             }
         }
